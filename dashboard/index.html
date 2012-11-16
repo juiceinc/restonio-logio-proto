@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title></title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="assets/css/main.css"/>
+
+    </head>
+    <body>
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="brand">Demo</div>
+            <ul class="nav">
+              <li><a href="#" class="add-widget">Add new visualization</a></li>
+              <li><a href="#" class="toggle-widget" data-action="expand">Expand All</a></li>
+              <li class="dropdown" id="screen-toggle">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Screen Sizes</a>
+                <ul class="dropdown-menu">
+                  <li class="active"><a href="#" class="toggle-size1">Regular</a></li>
+                  <li><a href="#" class="toggle-size2">Large</a></li>
+                </ul>
+              </li>
+              <li class="dropdown" id="sort-options">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort Options</a>
+                <ul class="dropdown-menu">
+                  <li class="active"><a href="#" data-sort="original-order">Original order</a></li>
+                  <li><a href="#" data-sort="width">Best fit</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container size1">
+        <div id="widget-list" class="">
+        </div>
+      </div>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <!-- templates -->
+        <script type="text/template" id="widget-template">
+          <div class="widget-heading">
+            <span><%= index %></span> <a class="btn btn-link btn-small pull-right" data-toggle="collapse" href="#<%= idPrefix %>"><span>expand</span> <i class="icon-chevron-down"></i></a>
+          </div>
+          <div id="<%= idPrefix %>" class="widget-content collapse">
+            <div class="widget-content-inner"><img src="assets/images/visualizations/<%= image %>" /></div>
+          </div>
+        </script>
+
+        <!-- build:js scripts/scripts.js -->
+        <script src="assets/js/lib/jquery.min.js"></script>
+        <script src="assets/js/lib/underscore-min.js"></script>
+        <script src="assets/js/lib/backbone-min.js"></script>
+        <script src="assets/js/lib/jquery.isotope.min.js"></script>
+        <script src="assets/js/lib/bootstrap/bootstrap-transition.js"></script>
+        <script src="assets/js/lib/bootstrap/bootstrap-collapse.js"></script>
+        <script src="assets/js/lib/bootstrap/bootstrap-dropdown.js"></script>
+        <script src="assets/js/lib/faker/Faker.js"></script>
+        <script src="javascript/main.js"></script>
+        <script src="javascript/views/widget_view.js"></script>
+        <script src="javascript/views/widget_list_view.js"></script>
+        <script src="javascript/views/add_widget_view.js"></script>
+        <script src="javascript/views/toggle_widget_state_view.js"></script>
+        <script src="javascript/views/toggle_screen_size_view.js"></script>
+        <script src="javascript/views/sort_options_view.js"></script>
+        <script src="javascript/models/widget.js"></script>
+        <script src="javascript/collections/widgets.js"></script>
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

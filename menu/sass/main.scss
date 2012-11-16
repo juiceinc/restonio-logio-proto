@@ -1,0 +1,92 @@
+@import "compass_twitter_bootstrap";
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  z-index: 1;
+  position: relative;
+
+  thead {
+    th {
+      border: 2px solid transparent !important;
+      @include border-radius(5px);
+      text-align: center !important;
+      font-weight: normal !important;
+      font-size: 12px;
+      color: $white;
+      position: relative;
+      &:hover {
+        z-index: 5;
+        border: 2px solid black !important;
+        .sort, .circle {
+          visibility: visible;
+        }
+      }
+
+      .sort {
+        position: absolute;
+        left: 5px;
+      }
+
+      .circle {
+        $circle_radius: 10px;
+        width: $circle_radius;
+        height: $circle_radius;
+        @include border-radius($circle_radius);
+        @include inline-block;
+        background-color: black;
+        position: absolute;
+        right: 5px;
+        top: 10px;
+      }
+      
+      .sort, .circle {
+        visibility: hidden;
+      }
+    }
+  }
+
+  td {
+    background-color: #F9F9F9;
+    border: 1px solid #ECECEC;
+    width: (100%/6);
+    text-align: center !important;
+  }
+}
+
+.menu-container {
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+#measure-menu {
+  position: absolute;
+  left: 0;
+  z-index: 5;
+
+  .btn-toolbar {
+    margin: 0 !important;
+  }
+
+  .btn-group + .btn-group {
+    margin-left: 0px;
+  }
+
+/*  .less-options {
+    @include border-corner-radius(top, right, 0);
+    @include border-corner-radius(bottom, right, 0);
+  }
+
+  .less-frequently-used.btn-group > .btn:first-child {
+    @include border-corner-radius(top, left, 0);
+    @include border-corner-radius(bottom, left, 0);
+    border-left: none;
+  }
+*/
+}

@@ -1,0 +1,79 @@
+@import "compass_twitter_bootstrap_awesome";
+
+$left_gutter_width: 10px;
+$right_gutter_width: 10px;
+
+body {
+  padding-top: 50px;
+}
+
+#widget-list.well {
+  padding: 0px !important;
+}
+
+.widget {
+  // @include box-shadow(rgba(0.5,0.5,0.5,0.3) 0px 1px 3px);
+  @include box-shadow(rgba(128,128,128,0.8) 0px 1px 3px);
+  // @include border-radius(2px);
+  background-color: $white;
+  margin-left: $left_gutter_width;
+  margin-right: $right_gutter_width;
+  margin-top: 3px;
+  margin-bottom: 3px;
+
+  .widget-heading {
+    height: 30px;
+    padding: 5px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .widget-content-inner {
+    font-size: 12px;
+    color: $white;
+    img {
+      width: inherit;
+      height: inherit;
+    }
+  }
+}
+
+.height1 {
+  height: 200px;
+}
+
+.height2 {
+  height: 300px;
+}
+
+
+// Creating different widths for different screen sizes
+$screen_size_1: 940px;
+$screen_size_2: 1170px;
+$numColumns: 12;
+$gutter_width: $left_gutter_width + $right_gutter_width;
+
+// 2 is subtracted for the left and right margins on .container
+$size_1_column_width: floor(( ($screen_size_1 - 2) - ($numColumns * $gutter_width) ) / $numColumns);
+$size_2_column_width: floor(( ($screen_size_2 - 2) - ($numColumns * $gutter_width) ) / $numColumns);
+
+$i: $numColumns;
+.size1 {
+  width: $screen_size_1;
+
+  @while $i > 0 {
+    .width#{$i} { @include core-span($i, $size_1_column_width, $gutter_width); }
+    $i: $i - 1;
+  }
+}
+
+$i: $numColumns;
+.size2 {
+  width: $screen_size_2;
+
+  @while $i > 0 {
+    .width#{$i} { @include core-span($i, $size_2_column_width, $gutter_width); }
+    $i: $i - 1;
+  }
+}
+
+@import "isotope";
