@@ -127,6 +127,11 @@
 
       this.width = this.$el.width();
       this.adjustPosition();
+
+      //if event is triggered programmatically, stop its propagation to prevent it from 'hiding' bootstrap dropdown
+      //which gets hidden on any outside click.
+      if(event.originalEvent === undefined)
+         event.stopPropagation();
     },
 
     showLessFrequentlyUsedOptions: function(event) {
