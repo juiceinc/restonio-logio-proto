@@ -30,7 +30,7 @@ body {
 
       .sort {
         position: absolute;
-        left: 5px;
+        right: 5px;
       }
 
       .circle {
@@ -41,7 +41,7 @@ body {
         @include inline-block;
         background-color: black;
         position: absolute;
-        right: 5px;
+        left: 5px;
         top: 10px;
       }
       
@@ -90,3 +90,22 @@ body {
   }
 */
 }
+
+.group-row .dropdown-toggle {
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+  }
+
+  .caret {
+    border-top-color: #08C;
+  }
+
+   &:hover {
+    text-decoration: none;
+  }
+}
+
