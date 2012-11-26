@@ -7,6 +7,7 @@
     el: '#table-container',
 
     groupRowTemplateName: '#group-row-template',
+    groupRowItemTemplateName: '#group-row-item-template',
 
     events: {
       'mouseenter thead th': 'showMenu',
@@ -29,6 +30,9 @@
       this.menu.$('[data-title]').popover();
 
       this.groupRowTemplate = _.template( $(this.groupRowTemplateName).html() );
+      this.groupRowItemTemplate = _.template( $(this.groupRowItemTemplateName).html() );
+
+      $('tbody').on('click', '.list-item a', this.updateSelection);
     },
 
     // Show the menu.
@@ -88,14 +92,14 @@
 
     // Group `$header`.
     addHeaderGrouping: function($header) {
-      var $group = $("<div class='group-icon'><i class='icon-tasks'></i></div>"); // TODO: use a template
+      /*var $group = $("<div class='group-icon'><i class='icon-tasks'></i></div>"); // TODO: use a template
 
       $group.css({
         position: 'absolute',
         left: '0px',
         top: ($header.height() + 2)*-1 + 'px'
       });
-      $group.appendTo($header);
+      $group.appendTo($header); */
 
       $header.addClass('grouped');
     },
@@ -110,6 +114,21 @@
 
     addGroupRow: function() {
       this.$('tbody').prepend(this.groupRowTemplate());
+
+      //grab the cells for the row and add content to it.
+      var colWidth = $('.table').width() / 6,
+          rowCells = $('.success td'),
+          that = this;
+
+      _.each(rowCells, function(cell){
+        var opts = that.createDummyContent() || [];
+        $(cell).append(that.groupRowItemTemplate({options: opts}));
+
+        //mark the first option as selected
+        $('li', cell).first().addClass('active');
+      });
+
+      $('.dropdown-toggle span').css('max-width', colWidth - 30);
     },
 
     removeGroupRow: function() {
@@ -118,5 +137,29 @@
 
     areAnyColumnsGrouped: function() {
       return this.$('th.grouped').length;
+    },
+
+    createDummyContent: function() {
+      var opts = [];
+
+      for(var count=0; count<3; count +=1){
+        var label = Faker.Internet.userName();
+        opts.push(label);
+      }
+
+      return opts;
+    },
+
+    updateSelection: function(){
+      var sel = $(this).text(),
+          parent = $(this).parent(),
+          container = $(parent).closest('.dropdown');
+
+      if($(parent).hasClass('active')) return;
+      $('.list-item', container).removeClass('active');
+
+      //update the text for the dropdown trigger
+      $('.dropdown-toggle span', container).text(sel);
+      $(parent).addClass('active');
     }
   });

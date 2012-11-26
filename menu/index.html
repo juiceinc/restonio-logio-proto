@@ -10,7 +10,6 @@
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="assets/css/main.css"/>
-
     </head>
     <body>
     <div class="container">
@@ -20,31 +19,35 @@
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th class="label-important"><span class="sort"><i class="icon-resize-vertical"></i></span>Timestamp<div class="circle"></div></th>
-              <th class="label-info">
+              <th class="label-important">
+                <div class="circle"></div>
+                Timestamp
                 <span class="sort"><i class="icon-resize-vertical"></i></span>
+              </th>
+              <th class="label-info">
+                <div class="circle"></div>
                 Calls
-                <div class="circle"></div>
+                <span class="sort"><i class="icon-resize-vertical"></i></span>
               </th>
               <th class="label-info">
-                <span class="sort"><i class="icon-resize-vertical"></i></span>
+                <div class="circle"></div>
                 Sales
-                <div class="circle"></div>
+                <span class="sort"><i class="icon-resize-vertical"></i></span>
               </th>
               <th class="label-warning">
-                <span class="sort"><i class="icon-resize-vertical"></i></span>
+                <div class="circle"></div>
                 Country
-                <div class="circle"></div>
+                <span class="sort"><i class="icon-resize-vertical"></i></span>
               </th>
               <th class="label-warning">
-                <span class="sort"><i class="icon-resize-vertical"></i></span>
-                Product Category
                 <div class="circle"></div>
+                Product Category
+                <span class="sort"><i class="icon-resize-vertical"></i></span>
               </th>
               <th class="label-success">
-                <span class="sort"><i class="icon-resize-vertical"></i></span>
-                ID
                 <div class="circle"></div>
+                ID
+                <span class="sort"><i class="icon-resize-vertical"></i></span>
               </th>
             </tr>
           </thead>
@@ -109,22 +112,39 @@
 
         <script type='text/template' id='group-row-template'>
           <tr class='group-row success'>
-            <td><%= Faker.Internet.userName() %></td>
-            <td><%= Faker.Internet.userName() %></td>
-            <td><%= Faker.Internet.userName() %></td>
-            <td><%= Faker.Internet.userName() %></td>
-            <td><%= Faker.Internet.userName() %></td>
-            <td><%= Faker.Internet.userName() %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
+        </script>
+
+        <script type='text/template' id='group-row-item-template'>
+          <div class="dropdown">
+            <% var selection = "Option";
+                 if(options && options.length > 0) selection = options[0];
+              %>
+            <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#">
+              <span><%= selection %></span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <% _.each(options, function(opt) { %>
+              <li class="list-item"><a tabindex="-1" href="#"><%= opt %></a></li>
+              <%  }) %>
+            </ul>
+          </div>
         </script>
 
         <!-- build:js scripts/scripts.js -->
         <script src="assets/js/lib/jquery.min.js"></script>
         <script src="assets/js/lib/underscore-min.js"></script>
         <script src="assets/js/lib/backbone-min.js"></script>
-        <script src="assets/js/lib/bootstrap/bootstrap-transition.js"></script>
         <script src="assets/js/lib/bootstrap/bootstrap-tooltip.js"></script>
         <script src="assets/js/lib/bootstrap/bootstrap-popover.js"></script>
+        <script src="assets/js/lib/bootstrap/bootstrap.min.js"></script>
         <script src="assets/js/lib/faker/Faker.js"></script>
         <script src="javascript/main.js"></script>
         <script src="javascript/views/table_view.js"></script>

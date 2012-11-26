@@ -55,7 +55,7 @@
       this.$headerTarget = $(event.target);
       this.adjustPosition();
 
-      this.$el.animate({ width: 'show' });
+      this.$el.fadeIn();
 
       return false;
     },
@@ -72,14 +72,11 @@
 
       var id = setTimeout(function() {
         self.$('button.options.less-options').click();
-        self.$el.animate(
-          { width: 'hide' },
-          function() {
-            self.hideIds = [];
+        self.$el.fadeOut('fast', function(){
+          self.hideIds = [];
             self.$headerTarget = null;
             self.hidePopovers();
-          }
-        );
+        });
       }, this.hideDelay);
 
       this.hideIds.push(id);
